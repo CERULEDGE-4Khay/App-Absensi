@@ -64,7 +64,7 @@ class MagangDashboardController extends Controller
     }
 
     // Validasi jam masuk (contoh: max jam 09:00)
-    if (now()->format('H:i') > '21:00') {
+    if (now()->format('H:i') > '22:30') {
         return back()->with('error', 'Kamu terlambat absen');
     }
 

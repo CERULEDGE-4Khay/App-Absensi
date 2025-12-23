@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Magang extends Model
 {
     protected $fillable = [
-        'user_id','nama','asal_instansi','tanggal_mulai','tanggal_selesai','status','latitude','longitude'
+        'user_id','nama','email','asal_instansi','tanggal_mulai','tanggal_selesai','status','latitude','longitude'
     ];
 
     public function user()

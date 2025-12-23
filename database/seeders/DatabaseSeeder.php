@@ -11,12 +11,6 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $userMagang = User::create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt('password'),
-            'role' => 'magang'
-        ]);
 
         $userMagang = User::create([
             'name' => 'KHAY',
@@ -29,16 +23,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
             'role' => 'admin'
-        ]);
-
-        Magang::create([
-            'user_id' => $userMagang->id, // 🔥 INI KUNCI UTAMA
-            'nama' => 'Test User',
-            'email' => 'test@example.com',
-            'asal_instansi' => 'Universitas KHAY',
-            'tanggal_mulai' => now(),
-            'tanggal_selesai' => now()->addMonths(3),
-            'status' => 'aktif'
         ]);
 
         Magang::create([

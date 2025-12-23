@@ -5,7 +5,7 @@
 
     <table class="w-full bg-white rounded shadow">
         <thead>
-            <tr class="bg-gray-100">
+            <tr class="bg-gray-100 text-center">
                 <th class="p-3 text-left">Nama</th>
                 <th class="p-3">Tanggal</th>
                 <th class="p-3">Jam Masuk</th>
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             @forelse ($absensi as $a)
-            <tr class="border-t">
+            <tr class="border-t text-center">
                 <td class="p-3">{{ $a->magang->user->name }}</td>
                 <td class="p-3">{{ $a->tanggal }}</td>
                 <td class="p-3">{{ $a->jam_masuk }}</td>

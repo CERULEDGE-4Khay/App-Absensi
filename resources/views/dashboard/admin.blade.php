@@ -2,7 +2,7 @@
 <div class="bg-[#F5F7FB] min-h-screen px-8 py-6">
     <!-- HEADER -->
     <div class="flex justify-between items-center mb-8">
-        <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+        <h1 class="text-2xl font-bold mb-6">Dashboard Admin</h1>
 
         <div class="flex items-center gap-4">
             <input type="text" placeholder="Search..."
@@ -140,7 +140,6 @@
         </tbody>
     </table>
 </div>
-
 
 
 </x-app-layout>

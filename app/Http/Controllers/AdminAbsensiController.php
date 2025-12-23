@@ -13,7 +13,7 @@ class AdminAbsensiController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('admin.absensi', compact('absensi'));
+        return view('admin.absensi.index', compact('absensi'));
     }
 }
 
