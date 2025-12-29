@@ -4,15 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Magang;
+use App\Models\Absensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = User::query();
+
+        // Logika Search (Nama atau Email)
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%");
+            });
+        }
+
+        // Logika Filter Role
+        if ($request->has('role') && $request->role != '') {
+            $query->where('role', $request->role);
+        }
+
+        // Gunakan paginate jika datanya sudah banyak (opsional, ganti .get() jadi .paginate(10))
+        $users = $query->latest()->get();
+
         return view('admin.users.index', [
-            'users' => User::latest()->get()
+            'users' => $users
         ]);
     }
 
@@ -31,8 +51,8 @@ class AdminUserController extends Controller
 
              // KHUSUS MAGANG
             'asal_instansi' => 'required_if:role,magang',
-            'tanggal_mulai' => 'required_if:role,magang|date',
-            'tanggal_selesai' => 'required_if:role,magang|date|after:tanggal_mulai',
+            'tanggal_mulai' => 'required_if:role,magang|nullable|date',
+            'tanggal_selesai' => 'required_if:role,magang|nullable|date|after:tanggal_mulai',
         ]);
 
         $user = User::create([
@@ -78,5 +98,12 @@ class AdminUserController extends Controller
 
     return redirect()->route('admin.users.index')
         ->with('success', 'User berhasil diperbarui');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->back()->with('success', 'User dan semua data terkait berhasil dihapus!');
     }
 }

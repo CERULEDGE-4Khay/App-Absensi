@@ -22,14 +22,25 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
+public function store(LoginRequest $request)
+{
+    $request->authenticate();
 
-        $request->session()->regenerate();
+    // Cek status setelah berhasil autentikasi
+    if (auth()->user()->role === 'magang' && auth()->user()->magang->status === 'nonaktif') {
+        auth()->logout(); // Paksa logout
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        return redirect()->route('redirect');
+        return redirect()->route('login')->withErrors([
+            'email' => 'Akun kamu sudah tidak aktif lagi, silakan konfirmasi ke admin.',
+        ]);
     }
+
+    $request->session()->regenerate();
+    return redirect()->intended(route('redirect', absolute: false));
+}
 
     /**
      * Destroy an authenticated session.

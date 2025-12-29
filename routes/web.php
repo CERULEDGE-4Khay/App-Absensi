@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminAbsensiController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\Admin\MagangController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -64,7 +66,17 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::put('/admin/users/{user}', [AdminUserController::class, 'update'])
         ->name('admin.users.update');
+
+    Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])
+        ->name('admin.users.destroy');
+
+    Route::get('/admin/laporan', [LaporanController::class, 'index'])->name('admin.laporan.index');
+    Route::post('/admin/laporan/generate', [LaporanController::class, 'generate'])->name('admin.laporan.generate');
+
+    Route::get('/peserta-magang', [MagangController::class, 'index'])->name('admin.magang.index');
+    Route::patch('/peserta-magang/{magang}/status', [MagangController::class, 'updateStatus'])->name('admin.magang.update-status');
 });
+
 
 
 

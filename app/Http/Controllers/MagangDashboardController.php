@@ -19,6 +19,32 @@ class MagangDashboardController extends Controller
     abort(403, 'Data magang belum dibuat');
     }
 
+    $user = auth()->user();
+    if ($user->magang && $user->magang->status === 'nonaktif') {
+        return back()->with('error', 'Akun kamu sudah tidak aktif lagi, silakan konfirmasi ke admin.');
+    }
+
+    // 1. Hitung Total Hadir Bulan Ini
+    $totalHadir = \App\Models\Absensi::where('magang_id', $magang->id)
+        ->whereMonth('tanggal', now()->month)
+        ->whereYear('tanggal', now()->year)
+        ->where('status', 'hadir')
+        ->count();
+
+    // 2. Hitung Progress Bar Masa Magang
+    $tglMulai = \Carbon\Carbon::parse($magang->tanggal_mulai);
+    $tglSelesai = \Carbon\Carbon::parse($magang->tanggal_selesai);
+    $totalDurasi = $tglMulai->diffInDays($tglSelesai);
+    $durasiBerjalan = $tglMulai->diffInDays(now());
+    
+    // Pastikan persentase tidak lebih dari 100% atau kurang dari 0%
+    $persentase = ($durasiBerjalan / $totalDurasi) * 100;
+    $persentase = max(0, min(100, round($persentase)));
+
+    // 3. Sisa Hari
+    $sisaHari = now()->diffInDays($tglSelesai, false);
+    $sisaHari = $sisaHari < 0 ? 0 : ceil($sisaHari);
+    $sisaHari = (int)$sisaHari;
 
     $absensiHariIni = Absensi::where('magang_id', $magang->id)
         ->whereDate('tanggal', today())
@@ -27,6 +53,9 @@ class MagangDashboardController extends Controller
     return view('dashboard.magang', [
         'magang' => $magang,
         'absensiHariIni' => $absensiHariIni,
+        'totalHadir' => $totalHadir,
+        'persentase' => $persentase,
+        'sisaHari' => $sisaHari,
         'officeLat' => config('office.latitude'),
         'officeLon' => config('office.longitude'),
     ]);
@@ -74,14 +103,6 @@ class MagangDashboardController extends Controller
         return back()->with('error', 'Kamu sudah absen masuk hari ini');
     }
 
-    // Absensi::create([
-    //     'magang_id' => $magang->id,
-    //     'tanggal' => today(),
-    //     'jam_masuk' => now(),
-    //     'status' => 'Hadir',
-    //     'latitude' => $request->latitude,
-    //     'longitude' => $request->longitude,
-    // ]);
     $absen = new Absensi();
     $absen->magang_id = $magang->id;
     $absen->tanggal = today();

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('magangs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('asal_instansi');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->enum('status', ['aktif','selesai']);
+            $table->enum('status', ['aktif','selesai','nonaktif' ])->default('aktif');
             $table->timestamps();
         });
     }
