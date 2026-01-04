@@ -8,6 +8,7 @@ use App\Exports\AbsensiExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\LaporanController;
+use App\Models\LaporanLog;
 
 class LaporanService
 {
@@ -29,8 +30,12 @@ public function generate($awal, $akhir, $format, $namaFile)
 
     // 3. Logika Download
     if ($format === 'excel') {
-        // Gunakan $namaFile di sini juga biar rapi
-        return Excel::download(new AbsensiExport($awal, $akhir), $namaFile);
+    // Memastikan jika lupa menambahkan ekstensi di Controller, service akan menambahkannya
+    if (!str_ends_with($namaFile, '.xlsx')) {
+        $namaFile .= '.xlsx';
+    }
+    
+    return Excel::download(new AbsensiExport($awal, $akhir), $namaFile);
     }
 
     if ($format === 'pdf') {

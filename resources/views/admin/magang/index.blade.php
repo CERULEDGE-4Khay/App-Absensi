@@ -18,7 +18,7 @@
                     <option value="selesai" {{ request('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
                 </select>
 
-                <button type="submit" class="px-8 py-3 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all">Filter</button>
+                <button type="submit" class="px-8 py-3 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all">Cari</button>
             </form>
         </div>
 

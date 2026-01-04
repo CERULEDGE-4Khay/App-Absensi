@@ -75,6 +75,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::get('/peserta-magang', [MagangController::class, 'index'])->name('admin.magang.index');
     Route::patch('/peserta-magang/{magang}/status', [MagangController::class, 'updateStatus'])->name('admin.magang.update-status');
+
+    Route::get('/admin/laporan/preview', [LaporanController::class, 'preview'])->name('admin.laporan.preview');
 });
 
 

@@ -12,7 +12,7 @@
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
             </span>
-            Sistem Absensi Digital v1.0
+            Sistem Absensi Digital
         </div>
 
         <h1 class="text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-4">
@@ -20,7 +20,7 @@
         </h1>
         
         <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg mx-auto">
-            Selamat datang di portal absensi dan monitoring magang. Silakan masuk untuk mulai mencatat kehadiran atau mengelola data peserta.
+            Selamat datang di sistem absensi dan monitoring magang. Silakan masuk untuk mulai mencatat kehadiran atau mengelola data peserta.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
