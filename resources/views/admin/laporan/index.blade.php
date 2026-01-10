@@ -12,7 +12,7 @@
                 <form action="{{ route('admin.laporan.generate') }}" method="POST" class="space-y-6">
                     @csrf
                     <div>
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Periode Cepat</label>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Pilih Periode Cepat</label>
                         <div class="grid grid-cols-2 gap-2">
                             <button type="button" @click="setPeriod('today')" class="py-2 bg-slate-50 rounded-lg text-xs font-bold hover:bg-teal-50 hover:text-teal-600 transition-all">Hari Ini</button>
                             <button type="button" @click="setPeriod('weekly')" class="py-2 bg-slate-50 rounded-lg text-xs font-bold hover:bg-teal-50 hover:text-teal-600 transition-all">Minggu Ini</button>

@@ -138,7 +138,7 @@
                     </form>
 
                     <a href="{{ route('absensi.riwayat') }}" class="w-full bg-slate-800 text-white py-4 rounded-2xl font-bold text-center hover:bg-slate-900 transition-all">
-                        Riwayat Presensi
+                        Riwayat Absensi
                     </a>
                 </div>
 

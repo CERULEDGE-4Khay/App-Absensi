@@ -61,7 +61,7 @@
                 <button type="submit" :class="loading ? 'opacity-80 cursor-not-allowed' : ''"
                     class="relative w-full bg-teal-600 hover:bg-teal-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-teal-200 transition-all hover:-translate-y-1 active:scale-95 flex items-center justify-center overflow-hidden">
                     
-                    <span x-show="!loading" x-transition>Masuk Sekarang</span>
+                    <span x-show="!loading" x-transition>Masuk</span>
 
                     <span x-show="loading" class="flex items-center gap-2">
                         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@
 
         <div class="text-center mt-8">
             <a href="/" class="text-sm font-bold text-slate-400 hover:text-teal-600 transition-colors">
-                ← Kembali ke Halaman Utama
+                ← Kembali ke Halaman Awal
             </a>
         </div>
     </div>

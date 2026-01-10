@@ -50,10 +50,8 @@
                     </select>
                 </div>
 
-                {{-- Tombol Cari (Hidden jika ingin auto-submit, tapi bagus untuk aksesibilitas) --}}
                 <button type="submit" class="hidden">Cari</button>
                 
-                {{-- Reset Button (Hanya muncul jika ada pencarian/filter) --}}
                 @if(request('search') || request('role'))
                     <a href="{{ route('admin.users.index') }}" class="text-xs font-bold text-red-400 hover:text-red-600 transition-colors px-2">
                         Reset
@@ -78,7 +76,7 @@
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-slate-50/50 border-b border-slate-100">
-                        <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase tracking-[0.15em]">Identitas User</th>
+                        <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase tracking-[0.15em]">Nama Pengguna</th>
                         <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase tracking-[0.15em]">Email</th>
                         <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase tracking-[0.15em] text-center">Role Akses</th>
                         <th class="px-8 py-5 text-xs font-black text-slate-400 uppercase tracking-[0.15em] text-right">Opsi</th>

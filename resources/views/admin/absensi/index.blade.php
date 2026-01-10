@@ -14,11 +14,6 @@
                 <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
                 <span class="text-sm font-bold text-slate-700 uppercase tracking-widest">Live Report</span>
             </div>
-            <button class="p-2 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-            </button>
         </div>
     </div>
 
@@ -115,9 +110,9 @@
             </svg>
             Kembali ke Dashboard
         </a>
-        <div class="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">
+        {{-- <div class="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">
             MagangTrack System v1.0
-        </div>
+        </div> --}}
     </div>
 </div>
 </x-app-layout>

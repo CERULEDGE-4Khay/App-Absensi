@@ -20,7 +20,7 @@
         </h1>
         
         <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg mx-auto">
-            Selamat datang di sistem absensi dan monitoring magang. Silakan masuk untuk mulai mencatat kehadiran atau mengelola data peserta.
+            Selamat datang di sistem absensi dan monitoring magang. Silakan masuk untuk mulai mencatat kehadiran atau mengelola data peserta magang.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -31,7 +31,7 @@
                 </a>
             @else
                 <a href="{{ route('login') }}" class="group relative px-10 py-4 bg-teal-600 text-white rounded-2xl font-bold transition-all hover:bg-teal-700 hover:scale-105 active:scale-95 shadow-lg shadow-teal-200">
-                    Masuk ke Akun
+                    Masuk Sekarang
                     <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
                 </a>
             @endif
@@ -39,7 +39,7 @@
 
         <div class="mt-16 pt-8 border-t border-slate-200">
             <p class="text-sm text-slate-400 font-medium uppercase tracking-widest">
-                Internal Management System
+                Magang<span class="text-teal-600">Track</span> &copy; {{ date('Y') }}. All rights reserved.
             </p>
         </div>
     </div>
